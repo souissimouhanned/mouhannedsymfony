@@ -1,0 +1,54 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Accident index{% endblock %}
+
+{% block body %}
+    <h1>Recherche Accident </h1>
+
+    </div>
+    <form action="{{ path('recherche') }}" class="search-form" method="POST">
+        <input type="text" name="cin_assureur2" >
+        <input type="submit" value="recherche" >
+    </form>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date_accident</th>
+            <th>Cin_assureur1</th>
+            <th>Cin_assureur2</th>
+            <th>Emplacement</th>
+            <th>Matricule</th>
+
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for accident in accident %}
+            <tr>
+                <td>{{ accident.id }}</td>
+                <td>{{ accident.dateAccident ? accident.dateAccident|date('Y-m-d') : '' }}</td>
+                <td>{{ accident.cinAssureur1 }}</td>
+                <td>{{ accident.cinAssureur2 }}</td>
+                <td>{{ accident.emplacement }}</td>
+                <td>{{ accident.detailaccident.matricule }}</td>
+
+                </td>
+                <td>
+                    <a class="btn btn-outline-warning" href="{{ path('accident_show', {'id': accident.id}) }}">show Deatail</a>
+                    <a class="btn btn-outline-primary" href="{{ path('accident_edit', {'id': accident.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+    <a class="btn btn-warning" href="{{ path('new_detail') }}">Create new detail </a>
+    <a class="btn btn-primary" href="{{ path('accident_new') }}">Create new</a>
+    <div >  {{ knp_pagination_render(accident) }}
+    </div>
+{% endblock %}

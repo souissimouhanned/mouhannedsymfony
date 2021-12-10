@@ -1,0 +1,36 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Detail Accident{% endblock %}
+
+{% block body %}
+    <h1>Detailaccident</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ detailaccident.id }}</td>
+        </tr>
+        <tr>
+            <th>matricule</th>
+            <td>{{ detailaccident.matricule }}</td>
+        </tr>
+        <tr>
+            <th>image</th>
+            <td>{{ detailaccident.image }}</td>
+        </tr>
+        <tr>
+            <th>description_text</th>
+            <td>{{ detailaccident.DescriptionText }}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('accident_index') }}">back to list</a>
+    <a href="{{ path('accident_editdet') }}">update</a>
+    <a  href="{{ path('accident_index') }}">delete</a>
+
+
+
+{% endblock %}

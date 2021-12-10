@@ -1,0 +1,10 @@
+{% extends 'base-front.html.twig' %}
+{% block title %}Ajouter Detail accident{% endblock %}
+{% block body %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-success">Créer</button>
+    <a href="{{ path('accident_index') }}">Back </a>
+
+    {{ form_end(form) }}
+{% endblock %}

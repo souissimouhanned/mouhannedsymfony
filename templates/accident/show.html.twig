@@ -1,0 +1,38 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Accident{% endblock %}
+
+{% block body %}
+    <h1>Accident</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ accident.id }}</td>
+            </tr>
+            <tr>
+                <th>Date_accident</th>
+                <td>{{ accident.dateAccident ? accident.dateAccident|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Cin_assureur1</th>
+                <td>{{ accident.cinAssureur1 }}</td>
+            </tr>
+            <tr>
+                <th>Cin_assureur2</th>
+                <td>{{ accident.cinAssureur2 }}</td>
+            </tr>
+            <tr>
+                <th>Emplacement</th>
+                <td>{{ accident.emplacement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('accident_index') }}">back to list</a>
+
+    <a class="btn btn-Danger " href=" {{ path('accident_edit', {'id': accident.id}) }}">edit</a>
+
+    {{ include('accident/_delete_form.html.twig') }}
+{% endblock %}
